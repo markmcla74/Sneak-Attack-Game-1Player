@@ -656,6 +656,15 @@ button:disabled {
     padding: 8px 14px;
     min-width: 100px;
   }
+    .reset-container button {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+    .controls-container {
+    width: 75vmin; /* match grid width */
+    margin-top: 10px; /* adjust spacing from grid */
+  }
+  
   .controls-container button {
     font-size: 1.6rem;   /* text 2–3x larger */
     padding: 18px 28px;  /* huge tappable area */
