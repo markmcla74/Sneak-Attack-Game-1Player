@@ -654,21 +654,21 @@ button:disabled {
   .hud-box {
     font-size: 1rem;
     padding: 8px 14px;
-    min-width: 100px;
+    min-width: 70px;
   }
     .reset-container button {
     font-size: 0.8rem;
     padding: 5px 10px;
   }
     .controls-container {
-    width: 75vmin; /* match grid width */
+    width: 65vmin; /* match grid width */
     margin-top: 10px; /* adjust spacing from grid */
   }
   
   .controls-container button {
     font-size: 1.2rem;   /* readable, not oversized */
     padding: 5px 7px;  /* finger-friendly but compact */
-    min-width: 30px;
-    min-height: 30px;
+    min-width: 50px;
+    min-height: 50px;
   }
 }
