@@ -546,7 +546,7 @@ button:disabled {
   }
 }
 /* Between 500px and 650px */
-@media (max-width: 650px) and (min-width: 501px) {
+@media (max-width: 650px) {
 .grid {
   width: 55vmin;
 }
@@ -647,7 +647,7 @@ button:disabled {
 
 
 /* Taller phones (like Galaxy S10 in portrait) */
-@media (max-width: 500px) {
+@media (max-width: 599px) {
   .grid {
     width: 65vmin; /* ~25% larger grid */
   }
