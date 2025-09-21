@@ -245,6 +245,11 @@ background-color: lightblue; }
   cursor: pointer;
 }
 
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Glow & Camouflage */
 .abilities button {
   width: 100px;
@@ -277,6 +282,11 @@ button:hover {
 /* Active press feedback */
 button:active {
   transform: scale(0.95);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Camouflage button: green theme */
@@ -339,20 +349,31 @@ button:active {
   box-shadow: 0 0 12px #e57373;
 }
 
-
 @media (max-width: 1000px) {
-.grid {
-  width: 75vmin;
-}
-.hud-box {
-  font-size: 1rem;
-  padding: 8px 16px;
-  min-width: 100px;
-}
-.reset-container button {
-  font-size: 1rem;
-  padding: 8px 16px;
-}
+  .grid {
+    width: 75vmin;
+  }
+
+  .hud-box {
+    font-size: 1rem;
+    padding: 8px 16px;
+    min-width: 100px;
+  }
+
+  .reset-container button {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+
+  .controls-container {
+    width: 75vmin; /* match grid width */
+    margin-top: 10px; /* adjust spacing from grid */
+  }
+
+  .controls-container button {
+    font-size: 0.9rem;
+    padding: 8px 14px; /* make buttons scale down slightly */
+  }
 }
 /* 950px range */
 @media (max-width: 950px) {
@@ -368,6 +389,16 @@ button:active {
   font-size: 0.98rem;
   padding: 7px 15px;
 }
+  .controls-container {
+    width: 75vmin; /* match grid width */
+    margin-top: 10px; /* adjust spacing from grid */
+  }
+
+  .controls-container button {
+    font-size: 0.9rem;
+    padding: 8px 14px; /* make buttons scale down slightly */
+  }
+
 }
 /* Slightly smaller screens */
 @media (max-width: 900px) {
@@ -383,6 +414,15 @@ button:active {
   font-size: 0.95rem;
   padding: 7px 14px;
 }
+  .controls-container {
+    width: 75vmin; /* match grid width */
+    margin-top: 10px; /* adjust spacing from grid */
+  }
+
+  .controls-container button {
+    font-size: 0.9rem;
+    padding: 8px 14px; /* make buttons scale down slightly */
+  }
 }
 /* 850px range */
 @media (max-width: 850px) {
@@ -398,6 +438,15 @@ button:active {
   font-size: 0.93rem;
   padding: 7px 13px;
 }
+  .controls-container {
+    width: 75vmin; /* match grid width */
+    margin-top: 10px; /* adjust spacing from grid */
+  }
+
+  .controls-container button {
+    font-size: 0.9rem;
+    padding: 8px 14px; /* make buttons scale down slightly */
+  }
 }
 /* Tablet-ish range */
 @media (max-width: 800px) {
@@ -413,6 +462,16 @@ button:active {
   font-size: 0.9rem;
   padding: 7px 12px;
 }
+  .controls-container {
+    width: 75vmin; /* match grid width */
+    margin-top: 10px; /* adjust spacing from grid */
+  }
+
+  .controls-container button {
+    font-size: 0.9rem;
+    padding: 8px 14px; /* make buttons scale down slightly */
+  }
+    
 }
 /* 750px range */
 @media (max-width: 750px) {
@@ -428,6 +487,15 @@ button:active {
   font-size: 0.9rem;
   padding: 6px 12px;
 }
+  .controls-container {
+    width: 75vmin; /* match grid width */
+    margin-top: 10px; /* adjust spacing from grid */
+  }
+
+  .controls-container button {
+    font-size: 0.9rem;
+    padding: 8px 14px; /* make buttons scale down slightly */
+  }
 }
 /* Small screens */
 @media (max-width: 700px) {
@@ -443,6 +511,15 @@ button:active {
   font-size: 0.9rem;
   padding: 6px 12px;
 }
+  .controls-container {
+    width: 75vmin; /* match grid width */
+    margin-top: 10px; /* adjust spacing from grid */
+  }
+
+  .controls-container button {
+    font-size: 0.9rem;
+    padding: 8px 14px; /* make buttons scale down slightly */
+  }
 }
 /* Between 651px and 700px */
 @media (max-width: 700px) and (min-width: 651px) {
@@ -458,6 +535,15 @@ button:active {
   font-size: 0.88rem;
   padding: 6px 12px;
 }
+  .controls-container {
+    width: 75vmin; /* match grid width */
+    margin-top: 10px; /* adjust spacing from grid */
+  }
+
+  .controls-container button {
+    font-size: 0.9rem;
+    padding: 8px 14px; /* make buttons scale down slightly */
+  }
 }
 /* Between 500px and 650px */
 @media (max-width: 650px) and (min-width: 501px) {
@@ -473,6 +559,15 @@ button:active {
   font-size: 0.85rem;
   padding: 5px 11px;
 }
+  .controls-container {
+    width: 75vmin; /* match grid width */
+    margin-top: 10px; /* adjust spacing from grid */
+  }
+
+  .controls-container button {
+    font-size: 0.9rem;
+    padding: 8px 14px; /* make buttons scale down slightly */
+  }
 }
 /* Between phone + tablet */
 @media (max-width: 600px) {
@@ -488,6 +583,15 @@ button:active {
   font-size: 0.85rem;
   padding: 6px 11px;
 }
+  .controls-container {
+    width: 75vmin; /* match grid width */
+    margin-top: 10px; /* adjust spacing from grid */
+  }
+
+  .controls-container button {
+    font-size: 0.9rem;
+    padding: 8px 14px; /* make buttons scale down slightly */
+  }
 }
 /* Extra small screens (phones) */
 @media (max-width: 500px) {
@@ -503,6 +607,15 @@ button:active {
   font-size: 0.8rem;
   padding: 5px 10px;
 }
+  .controls-container {
+    width: 75vmin; /* match grid width */
+    margin-top: 10px; /* adjust spacing from grid */
+  }
+
+  .controls-container button {
+    font-size: 0.9rem;
+    padding: 8px 14px; /* make buttons scale down slightly */
+  }
 }
 /* If the window height is less than 800px */
 @media (max-height: 800px) {
@@ -517,6 +630,15 @@ button:active {
   .reset-container button {
     font-size: 0.9rem;
     padding: 6px 12px;
+  }
+    .controls-container {
+    width: 75vmin; /* match grid width */
+    margin-top: 10px; /* adjust spacing from grid */
+  }
+
+  .controls-container button {
+    font-size: 0.9rem;
+    padding: 8px 14px; /* make buttons scale down slightly */
   }
 }
 
@@ -533,6 +655,15 @@ button:active {
   .reset-container button {
     font-size: 0.8rem;
     padding: 5px 10px;
+  }
+    .controls-container {
+    width: 75vmin; /* match grid width */
+    margin-top: 10px; /* adjust spacing from grid */
+  }
+
+  .controls-container button {
+    font-size: 0.9rem;
+    padding: 8px 14px; /* make buttons scale down slightly */
   }
 }
 

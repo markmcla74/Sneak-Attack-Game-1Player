@@ -155,6 +155,13 @@
         }
         // Reset grid
         document.getElementById("reset-btn").disabled = true;
+         document.getElementById("btn-up").disabled = false;
+                document.getElementById("btn-left").disabled = false;
+                document.getElementById("btn-down").disabled = false;
+                document.getElementById("btn-right").disabled = false;
+                document.getElementById("btn-glow").disabled = false;
+                document.getElementById("btn-camouflage").disabled = false;
+                document.getElementById("btn-attack").disabled = false;
         renderGrid();
 
         // Show overlay again
@@ -202,6 +209,14 @@ document.getElementById("btn-attack").addEventListener("click", (e) => simulateK
                 player.symbol = "●";
                 opponent.symbol = "💥";
                 document.getElementById("reset-btn").disabled = false;
+                document.getElementById("btn-up").disabled = true;
+                document.getElementById("btn-left").disabled = true;
+                document.getElementById("btn-down").disabled = true;
+                document.getElementById("btn-right").disabled = true;
+                document.getElementById("btn-glow").disabled = true;
+                document.getElementById("btn-camouflage").disabled = true;
+                document.getElementById("btn-attack").disabled = true;
+                
                 gameOver = true;
                 renderGrid();
                 setTimeout(() => {
@@ -218,6 +233,13 @@ document.getElementById("btn-attack").addEventListener("click", (e) => simulateK
                 player.symbol = "💥";
                 opponent.symbol = "●";
                 document.getElementById("reset-btn").disabled = false;
+                document.getElementById("btn-up").disabled = true;
+                document.getElementById("btn-left").disabled = true;
+                document.getElementById("btn-down").disabled = true;
+                document.getElementById("btn-right").disabled = true;
+                document.getElementById("btn-glow").disabled = true;
+                document.getElementById("btn-camouflage").disabled = true;
+                document.getElementById("btn-attack").disabled = true;
                 gameOver = true;
                 renderGrid();
                 setTimeout(() => {
@@ -561,6 +583,13 @@ document.getElementById("btn-attack").addEventListener("click", (e) => simulateK
             players.P2.symbol = "💥"; // explosion for loser
             gameOver = true;
             document.getElementById("reset-btn").disabled = false;
+             document.getElementById("btn-up").disabled = true;
+                document.getElementById("btn-left").disabled = true;
+                document.getElementById("btn-down").disabled = true;
+                document.getElementById("btn-right").disabled = true;
+                document.getElementById("btn-glow").disabled = true;
+                document.getElementById("btn-camouflage").disabled = true;
+                document.getElementById("btn-attack").disabled = true;
             renderGrid();
             playVictoryChime();
             //  bgAudio.pause();
@@ -571,6 +600,13 @@ document.getElementById("btn-attack").addEventListener("click", (e) => simulateK
             gameOver = true;
             playVictoryChime();
             document.getElementById("reset-btn").disabled = false;
+             document.getElementById("btn-up").disabled = true;
+                document.getElementById("btn-left").disabled = true;
+                document.getElementById("btn-down").disabled = true;
+                document.getElementById("btn-right").disabled = true;
+                document.getElementById("btn-glow").disabled = true;
+                document.getElementById("btn-camouflage").disabled = true;
+                document.getElementById("btn-attack").disabled = true;
             renderGrid();
         }
     }
