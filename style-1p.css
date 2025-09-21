@@ -665,9 +665,10 @@ button:disabled {
     margin-top: 10px; /* adjust spacing from grid */
   }
   
-    .controls-container button {
-    font-size: 1.6rem;   /* text 2–3x larger */
-    padding: 18px 28px;  /* huge tappable area */
-    min-width: 80px;     /* make sure they don’t shrink */
+  .controls-container button {
+    font-size: 1.2rem;   /* readable, not oversized */
+    padding: 10px 14px;  /* finger-friendly but compact */
+    min-width: 60px;
+    min-height: 60px;
   }
 }
