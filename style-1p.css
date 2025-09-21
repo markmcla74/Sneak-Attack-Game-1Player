@@ -667,8 +667,8 @@ button:disabled {
   
   .controls-container button {
     font-size: 1.2rem;   /* readable, not oversized */
-    padding: 10px 14px;  /* finger-friendly but compact */
-    min-width: 60px;
-    min-height: 60px;
+    padding: 5px 7px;  /* finger-friendly but compact */
+    min-width: 30px;
+    min-height: 30px;
   }
 }
