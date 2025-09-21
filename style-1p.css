@@ -644,24 +644,10 @@ button:disabled {
   }
 }
 
-/* Extra small screens (phones, default small) */
-@media (max-width: 500px) {
-  .grid {
-    width: 50vmin; /* default compact grid */
-  }
-  .hud-box {
-    font-size: 0.8rem;
-    padding: 5px 10px;
-    min-width: 80px;
-  }
-  .controls-container button {
-    font-size: 0.8rem;
-    padding: 5px 10px;
-  }
-}
+
 
 /* Taller phones (like Galaxy S10 in portrait) */
-@media (max-width: 500px) and (min-height: 700px) {
+@media (max-width: 500px) {
   .grid {
     width: 65vmin; /* ~25% larger grid */
   }
