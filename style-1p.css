@@ -666,13 +666,13 @@ button:disabled {
     width: 65vmin; /* ~25% larger grid */
   }
   .hud-box {
-    font-size: 0.9rem;
-    padding: 6px 12px;
-    min-width: 85px;
+    font-size: 1rem;
+    padding: 8px 14px;
+    min-width: 100px;
   }
   .controls-container button {
-    font-size: 1.2rem; /* bigger text */
-    padding: 12px 20px; /* much larger buttons */
+    font-size: 1.6rem;   /* text 2–3x larger */
+    padding: 18px 28px;  /* huge tappable area */
+    min-width: 80px;     /* make sure they don’t shrink */
   }
 }
-
