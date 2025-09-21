@@ -593,30 +593,7 @@ button:disabled {
     padding: 8px 14px; /* make buttons scale down slightly */
   }
 }
-/* Extra small screens (phones) */
-@media (max-width: 500px) {
-.grid {
-  width: 50vmin;
-}
-.hud-box {
-  font-size: 0.8rem;
-  padding: 5px 10px;
-  min-width: 80px;
-}
-.reset-container button {
-  font-size: 0.8rem;
-  padding: 5px 10px;
-}
-  .controls-container {
-    width: 75vmin; /* match grid width */
-    margin-top: 10px; /* adjust spacing from grid */
-  }
 
-  .controls-container button {
-    font-size: 0.9rem;
-    padding: 8px 14px; /* make buttons scale down slightly */
-  }
-}
 /* If the window height is less than 800px */
 @media (max-height: 800px) {
   .grid {
@@ -664,6 +641,38 @@ button:disabled {
   .controls-container button {
     font-size: 0.9rem;
     padding: 8px 14px; /* make buttons scale down slightly */
+  }
+}
+
+/* Extra small screens (phones, default small) */
+@media (max-width: 500px) {
+  .grid {
+    width: 50vmin; /* default compact grid */
+  }
+  .hud-box {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    min-width: 80px;
+  }
+  .controls-container button {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+}
+
+/* Taller phones (like Galaxy S10 in portrait) */
+@media (max-width: 500px) and (min-height: 700px) {
+  .grid {
+    width: 65vmin; /* ~25% larger grid */
+  }
+  .hud-box {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    min-width: 85px;
+  }
+  .controls-container button {
+    font-size: 1.2rem; /* bigger text */
+    padding: 12px 20px; /* much larger buttons */
   }
 }
 
