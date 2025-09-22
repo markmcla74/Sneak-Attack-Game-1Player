@@ -650,6 +650,7 @@ button:disabled {
 @media (max-width: 599px) {
   .grid {
     width: 65vmin; /* ~25% larger grid */
+     margin-bottom: 4px;
   }
   .hud-box {
     font-size: 1rem;
@@ -661,6 +662,7 @@ button:disabled {
 #p2-glows,
 #turn-indicator {
   font-size: 0.9rem;   /* smaller text */
+  flex-wrap: wrap;
   padding: 4px 8px;    /* tighter padding */
   min-width: auto;     /* let the box shrink naturally */
 }
@@ -677,6 +679,8 @@ button:disabled {
   .controls-container {
     flex-direction: column;   /* stack instead of row */
     align-items: center;      /* center everything */
+     margin-top: 0;
+    padding-top: 0;
   }
 
   .controls-section {
