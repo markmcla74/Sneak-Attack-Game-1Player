@@ -653,7 +653,10 @@ button:disabled {
   }
   .hud-box {
     font-size: 1rem;
-    padding: 8px 14px;
+     justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px; 
+    padding: 0px 14px;
     min-width: 70px;
   }
     .reset-container button {
@@ -674,5 +677,16 @@ button:disabled {
     padding: 5px 7px;  /* finger-friendly but compact */
     min-width: 50px;
     min-height: 50px;
+  }
+  
+    /* For special ability buttons, allow extra width */
+  .abilities button {
+    min-width: 120px;
+  }
+  
+    /* For special ability buttons, allow extra width */
+  .actions button{
+    min-width: 120px;
+  }
   }
 }
