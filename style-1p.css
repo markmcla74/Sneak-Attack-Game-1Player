@@ -655,10 +655,21 @@ button:disabled {
     font-size: 1rem;
      justify-content: center;
       flex-wrap: wrap;
-      gap: 8px; 
-    padding: 0px 14px;
-    min-width: 70px;
   }
+  
+ #p1-glows,
+#p2-glows,
+#turn-indicator {
+  font-size: 0.9rem;   /* smaller text */
+  padding: 4px 8px;    /* tighter padding */
+  min-width: auto;     /* let the box shrink naturally */
+}
+.turn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px; /* reduce spacing between hud-boxes */
+}
     .reset-container button {
     font-size: 0.8rem;
     padding: 5px 10px;
