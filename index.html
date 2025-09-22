@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.6.0">
-  <meta charset="UTF-8">
   <title>Sneak Attack Game</title>
   <link rel="stylesheet" href="style-1p.css">
 </head>
@@ -41,33 +41,23 @@
   <!-- </div> -->
   <!-- Game Grid -->
   <div class="grid" id="game"></div><!-- Reset button -->
-<div class="controls-container">
-  <!-- Left: Movement D-pad -->
-  <div class="controls-section dpad">
-    <div class="row">
-      <button id="btn-up">▲</button> </div>
-    <div class="row">
-      <button id="btn-left">◀</button>
-      <button id="btn-down">▼</button>
-      <button id="btn-right">▶</button>
+  <div class="controls-container">
+    <!-- Left: Movement D-pad -->
+    <div class="controls-section dpad">
+      <div class="row">
+        <button id="btn-up">▲</button>
+      </div>
+      <div class="row">
+        <button id="btn-left">◀</button> <button id="btn-down">▼</button> <button id="btn-right">▶</button>
+      </div>
+    </div><!-- Middle: Special Abilities -->
+    <div class="controls-section abilities">
+      <button class="btn-glow" id="btn-glow">Glow</button> <button class="btn-camouflage" id="btn-camouflage">Camouflage</button>
+    </div><!-- Right: Attack & Reset -->
+    <div class="controls-section actions">
+      <button class="btn-attack" id="btn-attack">Attack</button> <button id="reset-btn" disabled>Reset</button>
     </div>
-  </div>
-
-  <!-- Middle: Special Abilities -->
-  <div class="controls-section abilities">
-    <button class="btn-glow" id="btn-glow">Glow</button>
-    <button class="btn-camouflage" id="btn-camouflage">Camouflage</button>
-  </div>
-
-  <!-- Right: Attack & Reset -->
-  <div class="controls-section actions">
-    <button class="btn-attack" id="btn-attack">Attack</button>
-    <button id="reset-btn" disabled>Reset</button>
-  </div>
-</div>
-  
-  
-  <!-- <div class="reset-container">
+  </div><!-- <div class="reset-container">
     <button id="reset-btn" disabled>Reset Game</button>
   </div> -->
   <script src="script-1p.js"></script>

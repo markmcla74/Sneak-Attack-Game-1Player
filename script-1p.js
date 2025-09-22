@@ -155,13 +155,13 @@
         }
         // Reset grid
         document.getElementById("reset-btn").disabled = true;
-         document.getElementById("btn-up").disabled = false;
-                document.getElementById("btn-left").disabled = false;
-                document.getElementById("btn-down").disabled = false;
-                document.getElementById("btn-right").disabled = false;
-                document.getElementById("btn-glow").disabled = false;
-                document.getElementById("btn-camouflage").disabled = false;
-                document.getElementById("btn-attack").disabled = false;
+        document.getElementById("btn-up").disabled = false;
+        document.getElementById("btn-left").disabled = false;
+        document.getElementById("btn-down").disabled = false;
+        document.getElementById("btn-right").disabled = false;
+        document.getElementById("btn-glow").disabled = false;
+        document.getElementById("btn-camouflage").disabled = false;
+        document.getElementById("btn-attack").disabled = false;
         renderGrid();
 
         // Show overlay again
@@ -175,18 +175,18 @@
         handleKeyPress(e);
     });
 
- // Movement buttons
-document.getElementById("btn-up").addEventListener("click", (e) => simulateKeyPress("w", e.target));
-document.getElementById("btn-down").addEventListener("click", (e) => simulateKeyPress("s", e.target));
-document.getElementById("btn-left").addEventListener("click", (e) => simulateKeyPress("a", e.target));
-document.getElementById("btn-right").addEventListener("click", (e) => simulateKeyPress("d", e.target));
+    // Movement buttons
+    document.getElementById("btn-up").addEventListener("click", (e) => simulateKeyPress("w", e.target));
+    document.getElementById("btn-down").addEventListener("click", (e) => simulateKeyPress("s", e.target));
+    document.getElementById("btn-left").addEventListener("click", (e) => simulateKeyPress("a", e.target));
+    document.getElementById("btn-right").addEventListener("click", (e) => simulateKeyPress("d", e.target));
 
-// Action buttons
-document.getElementById("btn-camouflage").addEventListener("click", (e) => simulateKeyPress("c", e.target));
-document.getElementById("btn-glow").addEventListener("click", (e) => simulateKeyPress("g", e.target));
-document.getElementById("btn-attack").addEventListener("click", (e) => simulateKeyPress(" ", e.target));
+    // Action buttons
+    document.getElementById("btn-camouflage").addEventListener("click", (e) => simulateKeyPress("c", e.target));
+    document.getElementById("btn-glow").addEventListener("click", (e) => simulateKeyPress("g", e.target));
+    document.getElementById("btn-attack").addEventListener("click", (e) => simulateKeyPress(" ", e.target));
 
-    function handleKeyPress(e){
+    function handleKeyPress(e) {
         const key = e.key;
         let enterDoor = false;
         let player, opponent;
@@ -216,7 +216,7 @@ document.getElementById("btn-attack").addEventListener("click", (e) => simulateK
                 document.getElementById("btn-glow").disabled = true;
                 document.getElementById("btn-camouflage").disabled = true;
                 document.getElementById("btn-attack").disabled = true;
-                
+
                 gameOver = true;
                 renderGrid();
                 setTimeout(() => {
@@ -332,74 +332,74 @@ document.getElementById("btn-attack").addEventListener("click", (e) => simulateK
             let newCol = player.col + dir[1];
             console.log(dir[0]);
             console.log(dir[1]);
-            
+
             //check purple door at row 3, col 0 for Player 1
             if (currentPlayer === "P1" && player.row === 3 && player.col === 0 && e.key === "a" && enterDoor === false) {
-                    playChimeForPlayer("P1");
-                    newRow = 3;
-                    newCol = 5;
-                    enterDoor = true;
+                playChimeForPlayer("P1");
+                newRow = 3;
+                newCol = 5;
+                enterDoor = true;
             }
-            
-            
-             //check purple door at row 3, col 0 for Player 2
+
+
+            //check purple door at row 3, col 0 for Player 2
             if (currentPlayer === "P2" && player.row === 3 && player.col === 0 && e.key === "ArrowLeft" && enterDoor === false) {
-                   playChimeForPlayer("P2");
-                    newRow = 3;
-                    newCol = 5;
-                    enterDoor = true;
-                
+                playChimeForPlayer("P2");
+                newRow = 3;
+                newCol = 5;
+                enterDoor = true;
+
             }
-            
+
             //check purple door at row 3, col 5 for Player 1
-            if (currentPlayer === "P1" && player.row === 3 && player.col === 5 && e.key === "d" && enterDoor === false ) {
-                   playChimeForPlayer("P1");
-                    newRow = 3;
-                    newCol = 0;
-                    enterDoor = true;
+            if (currentPlayer === "P1" && player.row === 3 && player.col === 5 && e.key === "d" && enterDoor === false) {
+                playChimeForPlayer("P1");
+                newRow = 3;
+                newCol = 0;
+                enterDoor = true;
             }
-            
+
             //check purple door at row 3, col 5 for Player 2
             if (currentPlayer === "P2" && player.row === 3 && player.col === 5 && e.key === "ArrowRight") {
-                   playChimeForPlayer("P2");
-                    newRow = 3;
-                    newCol = 0;
-                    enterDoor = true;
+                playChimeForPlayer("P2");
+                newRow = 3;
+                newCol = 0;
+                enterDoor = true;
             }
-            
+
             //check red door at row 0, col 2 for Player 1
             if (currentPlayer === "P1" && player.row === 0 && player.col === 2 && e.key === "w") {
-                   playChimeForPlayer("P1");
-                    newRow = 5;
-                    newCol = 2;
-                    enterDoor = true;
+                playChimeForPlayer("P1");
+                newRow = 5;
+                newCol = 2;
+                enterDoor = true;
             }
-            
+
             //check red door at row 0, col 2 for Player 2
             if (currentPlayer === "P2" && player.row === 0 && player.col === 2 && e.key === "ArrowUp") {
-                   playChimeForPlayer("P2");
-                   newRow = 5;
-                    newCol = 2;
-                    enterDoor = true;
+                playChimeForPlayer("P2");
+                newRow = 5;
+                newCol = 2;
+                enterDoor = true;
             }
-            
+
             //check red door at row 5, col 2 for Player 1
             if (currentPlayer === "P1" && player.row === 5 && player.col === 2 && e.key === "s") {
-                  playChimeForPlayer("P1");
-                   newRow = 0;
-                    newCol = 2;
-                    enterDoor = true;
+                playChimeForPlayer("P1");
+                newRow = 0;
+                newCol = 2;
+                enterDoor = true;
             }
-            
+
             //check red door at row 5, col 2 for Player 1
             if (currentPlayer === "P2" && player.row === 5 && player.col === 2 && e.key === "ArrowDown") {
-                  playChimeForPlayer("P2");
-                   newRow = 0;
-                    newCol = 2;
-                    enterDoor = true;
+                playChimeForPlayer("P2");
+                newRow = 0;
+                newCol = 2;
+                enterDoor = true;
             }
-            
-            if (enterDoor === true){
+
+            if (enterDoor === true) {
                 player.row = newRow;
                 player.col = newCol;
 
@@ -465,19 +465,21 @@ document.getElementById("btn-attack").addEventListener("click", (e) => simulateK
                 renderGrid();
             }
 
-        }  
-        
-    }
-    
-   function simulateKeyPress(key, btnEl) {
-  const fakeEvent = { key: key };
-  handleKeyPress(fakeEvent);
+        }
 
-  // Visual feedback
-  btnEl.classList.add("pressed");
-  setTimeout(() => btnEl.classList.remove("pressed"), 150);
-}
-    
+    }
+
+    function simulateKeyPress(key, btnEl) {
+        const fakeEvent = {
+            key: key
+        };
+        handleKeyPress(fakeEvent);
+
+        // Visual feedback
+        btnEl.classList.add("pressed");
+        setTimeout(() => btnEl.classList.remove("pressed"), 150);
+    }
+
     // Robust interval-based glow that guarantees final color
     function glowOpponent(opponent, duration = 1000) {
         // Defensive: cancel any previous glow for this opponent
@@ -583,13 +585,13 @@ document.getElementById("btn-attack").addEventListener("click", (e) => simulateK
             players.P2.symbol = "💥"; // explosion for loser
             gameOver = true;
             document.getElementById("reset-btn").disabled = false;
-             document.getElementById("btn-up").disabled = true;
-                document.getElementById("btn-left").disabled = true;
-                document.getElementById("btn-down").disabled = true;
-                document.getElementById("btn-right").disabled = true;
-                document.getElementById("btn-glow").disabled = true;
-                document.getElementById("btn-camouflage").disabled = true;
-                document.getElementById("btn-attack").disabled = true;
+            document.getElementById("btn-up").disabled = true;
+            document.getElementById("btn-left").disabled = true;
+            document.getElementById("btn-down").disabled = true;
+            document.getElementById("btn-right").disabled = true;
+            document.getElementById("btn-glow").disabled = true;
+            document.getElementById("btn-camouflage").disabled = true;
+            document.getElementById("btn-attack").disabled = true;
             renderGrid();
             playVictoryChime();
             //  bgAudio.pause();
@@ -600,13 +602,13 @@ document.getElementById("btn-attack").addEventListener("click", (e) => simulateK
             gameOver = true;
             playVictoryChime();
             document.getElementById("reset-btn").disabled = false;
-             document.getElementById("btn-up").disabled = true;
-                document.getElementById("btn-left").disabled = true;
-                document.getElementById("btn-down").disabled = true;
-                document.getElementById("btn-right").disabled = true;
-                document.getElementById("btn-glow").disabled = true;
-                document.getElementById("btn-camouflage").disabled = true;
-                document.getElementById("btn-attack").disabled = true;
+            document.getElementById("btn-up").disabled = true;
+            document.getElementById("btn-left").disabled = true;
+            document.getElementById("btn-down").disabled = true;
+            document.getElementById("btn-right").disabled = true;
+            document.getElementById("btn-glow").disabled = true;
+            document.getElementById("btn-camouflage").disabled = true;
+            document.getElementById("btn-attack").disabled = true;
             renderGrid();
         }
     }
