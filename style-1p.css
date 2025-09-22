@@ -660,9 +660,13 @@ button:disabled {
     font-size: 0.8rem;
     padding: 5px 10px;
   }
-    .controls-container {
-    width: 65vmin; /* match grid width */
-    margin-top: 10px; /* adjust spacing from grid */
+  .controls-container {
+    flex-direction: column;   /* stack instead of row */
+    align-items: center;      /* center everything */
+  }
+
+  .controls-section {
+    margin: 8px 0;            /* space between each block */
   }
   
   .controls-container button {
