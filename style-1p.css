@@ -128,10 +128,10 @@ background-color: lightgreen; }
 .B {
 background-color: lightblue; }
 .p1 {
-  font-size: 8vmin; /* bigger solid black circle */
+  font-size: 4em; /* bigger solid black circle */
 }
 .p2 {
-  font-size: 8vmin; /* bigger solid blue circle */
+  font-size: 4em; /* bigger solid blue circle */
 }
 /* Fullscreen overlay */
 #overlay {
@@ -598,55 +598,81 @@ button:disabled {
 }
 /* Taller phones (like Galaxy S10 in portrait) */
 @media (max-width: 599px) {
-.grid {
-  width: 65vmin; /* ~25% larger grid */
-  margin-bottom: 4px;
+  .grid {
+    width: 65vmin; 
+    height: 65vmin;   /* ✅ force height so it’s a square */
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);     /* ✅ exactly 6 equal rows */
+    grid-template-columns: repeat(6, 1fr);  /* ✅ exactly 6 equal cols */
+    box-sizing: border-box;
+    margin-bottom: 4px;
+  }
+
+  .cell {
+    aspect-ratio: 1 / 1;        /* ✅ always square */
+    box-sizing: border-box;     /* ✅ borders don’t change cell size */
+    overflow: hidden;           /* ✅ text won’t stretch cells */
+    display: flex;              /* ✅ center player markers */
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;          /* ✅ fixed font size */
+  }
+
+   .p1,
+  .p2 {
+    font-size: 3em; /* larger relative size in smaller grids */
+  }
 }
-.hud-box {
-  font-size: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
+  
+  .hud-box {
+    font-size: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  #p1-glows,
+  #p2-glows,
+  #turn-indicator {
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+    padding: 4px 8px;
+    min-width: auto;
+  }
+
+  .turn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .reset-container button {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+
+  .controls-container {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .controls-section {
+    margin: 8px 0;
+  }
+
+  .controls-container button {
+    font-size: 1.2rem;
+    padding: 5px 7px;
+    min-width: 50px;
+    min-height: 50px;
+  }
+
+  .abilities button,
+  .actions button {
+    min-width: 120px;
+  }
 }
-#p1-glows,
-#p2-glows,
-#turn-indicator {
-  font-size: 0.9rem;   /* smaller text */
-  flex-wrap: wrap;
-  padding: 4px 8px;    /* tighter padding */
-  min-width: auto;     /* let the box shrink naturally */
-}
-.turn-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4px; /* reduce spacing between hud-boxes */
-}
-.reset-container button {
-  font-size: 0.8rem;
-  padding: 5px 10px;
-}
-.controls-container {
-  flex-direction: column;   /* stack instead of row */
-  align-items: center;      /* center everything */
-  margin-top: 0;
-  padding-top: 0;
-}
-.controls-section {
-  margin: 8px 0;            /* space between each block */
-}
-.controls-container button {
-  font-size: 1.2rem;   /* readable, not oversized */
-  padding: 5px 7px;  /* finger-friendly but compact */
-  min-width: 50px;
-  min-height: 50px;
-}
-/* For special ability buttons, allow extra width */
-.abilities button {
-  min-width: 120px;
-}
-/* For special ability buttons, allow extra width */
-.actions button{
-  min-width: 120px;
-}
-}
+
 
