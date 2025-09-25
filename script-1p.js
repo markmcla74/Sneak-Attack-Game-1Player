@@ -172,9 +172,61 @@
     // Handle key presses
     document.addEventListener("keydown", (e) => {
         if (gameOver) return; // ignore keys if game ended
-        handleKeyPress(e);
+        let actionKey = e.key;
+        processActionKey(actionKey);
     });
+    
+      function simulateKeyPress(key, btnEl) {
+        if (gameOver) return; // ignore keys if game ended
+        const fakeEvent = {
+            key: key
+        };
+        let actionKey = fakeEvent.key;
+        processActionKey(actionKey);
 
+        // Visual feedback
+        btnEl.classList.add("pressed");
+        setTimeout(() => btnEl.classList.remove("pressed"), 150);
+    }
+    
+    function processActionKey(actionKey){
+        if (gameOver) return;
+          // Step 1: Player 1 acts
+        processPlayerMove(actionKey, "P1");
+         // Step 2: Did Player 1 win / end the game?
+        if (gameOver) return;
+        // Step 3: Let Player 2 act (with small delay so it feels natural)
+        setTimeout(() => {
+            let aiKey = computerChooseMove();
+            processPlayerMove(aiKey, "P2");
+            // Step 4: Did Player 2 win?
+            if (gameOver) return;
+        }, 500); 
+    }
+    
+     function computerChooseMove() {
+  const directions = [
+    { row: -1, col: 0, key: "ArrowUp" },  // up
+    { row: 1, col: 0, key: "ArrowDown" },   // down
+    { row: 0, col: -1, key: "ArrowLeft" },  // left
+    { row: 0, col: 1, key: "ArrowRight" }    // right
+  ];
+
+  let chosenKey = null;
+
+  while (!chosenKey) {
+    const dir = directions[Math.floor(Math.random() * directions.length)];
+    const newRow = players.P2.row + dir.row;
+    const newCol = players.P2.col + dir.col;
+
+    // check if move is inside grid
+    if (newRow >= 0 && newRow < gridSize && newCol >= 0 && newCol < gridSize) {
+      chosenKey = dir.key;  // store the corresponding key
+    }
+  }
+
+  return chosenKey;
+}
     // Movement buttons
     document.getElementById("btn-up").addEventListener("click", (e) => simulateKeyPress("w", e.target));
     document.getElementById("btn-down").addEventListener("click", (e) => simulateKeyPress("s", e.target));
@@ -186,8 +238,7 @@
     document.getElementById("btn-glow").addEventListener("click", (e) => simulateKeyPress("g", e.target));
     document.getElementById("btn-attack").addEventListener("click", (e) => simulateKeyPress(" ", e.target));
 
-    function handleKeyPress(e) {
-        const key = e.key;
+    function processPlayerMove(actionKey, currentPlayer) {
         let enterDoor = false;
         let player, opponent;
         if (currentPlayer === "P1") {
@@ -199,8 +250,8 @@
         }
 
         // --- Attack Activation ---
-        if ((currentPlayer === "P1" && e.key === " ") ||
-            (currentPlayer === "P2" && e.key === "Enter")) {
+        if ((currentPlayer === "P1" && actionKey === " ") ||
+            (currentPlayer === "P2" && actionKey === "Enter")) {
             glowAttack(player);
             playVictoryChime();
             let distance = Math.abs(player.row - opponent.row) + Math.abs(player.col - opponent.col);
@@ -252,8 +303,8 @@
         }
 
         // --- Glow opponent Activation ---
-        if ((currentPlayer === "P1" && e.key === "g") ||
-            (currentPlayer === "P2" && e.key === "/")) {
+        if ((currentPlayer === "P1" && actionKey === "g") ||
+            (currentPlayer === "P2" && actionKey === "/")) {
             //playChime();
             if (currentPlayer === "P1") {
                 playChimeForPlayer("P1");
@@ -275,12 +326,7 @@
                 //alert(`${currentPlayer} used a Light Burst... but opponent wasn’t hidden.`);
             }
 
-            // End turn
-            if (currentPlayer === "P1") {
-                currentPlayer = "P2";
-            } else {
-                currentPlayer = "P1";
-            }
+            
             renderGrid();
             return;
         } //else {
@@ -290,8 +336,8 @@
 
 
         // --- Camouflage keys ---
-        if ((currentPlayer === "P1" && e.key === "c") ||
-            (currentPlayer === "P2" && e.key === "Shift")) {
+        if ((currentPlayer === "P1" && actionKey === "c") ||
+            (currentPlayer === "P2" && actionKey === "Shift")) {
             // playChime();
             if (currentPlayer === "P1") {
                 playChimeForPlayer("P1");
@@ -304,37 +350,30 @@
             player.camouflagedColor = camouflagedColor;
             player.symbol = "";
 
-            // End turn after camouflage
-            if (currentPlayer === "P1") {
-                currentPlayer = "P2";
-            } else {
-                currentPlayer = "P1";
-            }
-
             renderGrid();
             return; // don’t check movement
         }
 
         // --- Move Action ---
-        if ((currentPlayer === "P1" && e.key === "w") ||
-            (currentPlayer === "P1" && e.key === "a") ||
-            (currentPlayer === "P1" && e.key === "s") ||
-            (currentPlayer === "P1" && e.key === "d") ||
-            (currentPlayer === "P2" && e.key === "ArrowUp") ||
-            (currentPlayer === "P2" && e.key === "ArrowDown") ||
-            (currentPlayer === "P2" && e.key === "ArrowLeft") ||
-            (currentPlayer === "P2" && e.key === "ArrowRight")) {
+        if ((currentPlayer === "P1" && actionKey === "w") ||
+            (currentPlayer === "P1" && actionKey === "a") ||
+            (currentPlayer === "P1" && actionKey === "s") ||
+            (currentPlayer === "P1" && actionKey === "d") ||
+            (currentPlayer === "P2" && actionKey === "ArrowUp") ||
+            (currentPlayer === "P2" && actionKey === "ArrowDown") ||
+            (currentPlayer === "P2" && actionKey === "ArrowLeft") ||
+            (currentPlayer === "P2" && actionKey === "ArrowRight")) {
 
 
 
-            const dir = directions[key];
+            const dir = directions[actionKey];
             let newRow = player.row + dir[0];
             let newCol = player.col + dir[1];
-            console.log(dir[0]);
-            console.log(dir[1]);
+            //console.log(dir[0]);
+            //console.log(dir[1]);
 
             //check purple door at row 3, col 0 for Player 1
-            if (currentPlayer === "P1" && player.row === 3 && player.col === 0 && e.key === "a" && enterDoor === false) {
+            if (currentPlayer === "P1" && player.row === 3 && player.col === 0 && actionKey === "a" && enterDoor === false) {
                 playChimeForPlayer("P1");
                 newRow = 3;
                 newCol = 5;
@@ -343,7 +382,7 @@
 
 
             //check purple door at row 3, col 0 for Player 2
-            if (currentPlayer === "P2" && player.row === 3 && player.col === 0 && e.key === "ArrowLeft" && enterDoor === false) {
+            if (currentPlayer === "P2" && player.row === 3 && player.col === 0 && actionKey === "ArrowLeft" && enterDoor === false) {
                 playChimeForPlayer("P2");
                 newRow = 3;
                 newCol = 5;
@@ -352,7 +391,7 @@
             }
 
             //check purple door at row 3, col 5 for Player 1
-            if (currentPlayer === "P1" && player.row === 3 && player.col === 5 && e.key === "d" && enterDoor === false) {
+            if (currentPlayer === "P1" && player.row === 3 && player.col === 5 && actionKey === "d" && enterDoor === false) {
                 playChimeForPlayer("P1");
                 newRow = 3;
                 newCol = 0;
@@ -360,7 +399,7 @@
             }
 
             //check purple door at row 3, col 5 for Player 2
-            if (currentPlayer === "P2" && player.row === 3 && player.col === 5 && e.key === "ArrowRight") {
+            if (currentPlayer === "P2" && player.row === 3 && player.col === 5 && actionKey === "ArrowRight") {
                 playChimeForPlayer("P2");
                 newRow = 3;
                 newCol = 0;
@@ -368,7 +407,7 @@
             }
 
             //check red door at row 0, col 2 for Player 1
-            if (currentPlayer === "P1" && player.row === 0 && player.col === 2 && e.key === "w") {
+            if (currentPlayer === "P1" && player.row === 0 && player.col === 2 && actionKey === "w") {
                 playChimeForPlayer("P1");
                 newRow = 5;
                 newCol = 2;
@@ -376,7 +415,7 @@
             }
 
             //check red door at row 0, col 2 for Player 2
-            if (currentPlayer === "P2" && player.row === 0 && player.col === 2 && e.key === "ArrowUp") {
+            if (currentPlayer === "P2" && player.row === 0 && player.col === 2 && actionKey === "ArrowUp") {
                 playChimeForPlayer("P2");
                 newRow = 5;
                 newCol = 2;
@@ -384,7 +423,7 @@
             }
 
             //check red door at row 5, col 2 for Player 1
-            if (currentPlayer === "P1" && player.row === 5 && player.col === 2 && e.key === "s") {
+            if (currentPlayer === "P1" && player.row === 5 && player.col === 2 && actionKey === "s") {
                 playChimeForPlayer("P1");
                 newRow = 0;
                 newCol = 2;
@@ -392,7 +431,7 @@
             }
 
             //check red door at row 5, col 2 for Player 1
-            if (currentPlayer === "P2" && player.row === 5 && player.col === 2 && e.key === "ArrowDown") {
+            if (currentPlayer === "P2" && player.row === 5 && player.col === 2 && actionKey === "ArrowDown") {
                 playChimeForPlayer("P2");
                 newRow = 0;
                 newCol = 2;
@@ -416,15 +455,6 @@
 
                 //check corner win
                 checkCornerWin();
-                if (!gameOver) {
-                    // Switch turns after a move
-                    if (currentPlayer === "P1") {
-                        currentPlayer = "P2";
-                    } else {
-                        currentPlayer = "P1";
-                    }
-
-                }
                 renderGrid();
                 return;
             }
@@ -453,15 +483,6 @@
 
                 //check corner win
                 checkCornerWin();
-                if (!gameOver) {
-                    // Switch turns after a move
-                    if (currentPlayer === "P1") {
-                        currentPlayer = "P2";
-                    } else {
-                        currentPlayer = "P1";
-                    }
-
-                }
                 renderGrid();
             }
 
@@ -469,16 +490,7 @@
 
     }
 
-    function simulateKeyPress(key, btnEl) {
-        const fakeEvent = {
-            key: key
-        };
-        handleKeyPress(fakeEvent);
-
-        // Visual feedback
-        btnEl.classList.add("pressed");
-        setTimeout(() => btnEl.classList.remove("pressed"), 150);
-    }
+  
 
     // Robust interval-based glow that guarantees final color
     function glowOpponent(opponent, duration = 1000) {
